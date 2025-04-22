@@ -87,7 +87,7 @@ body {
 }
 
 .footer{
-  background-color:#999;color:black;margin:0px;text-align:center;padding:0.5em;border-top:1px solid #999;
+  background-color:#1b3952;color:white;margin:0px;text-align:center;padding:0.5em;border-top:1px solid #999;
 }
 </style>
 
@@ -95,17 +95,16 @@ body {
 <div style="width:100%;height:10px;background-color:#003c71;"></div>
 <div class="topnav" id="myTopnav">
   <NuxtLink to="/" class="active">Home</NuxtLink>
-  <NuxtLink to="/posts/1">Forum</NuxtLink>
+  <NuxtLink to="/">Forum</NuxtLink>
   <a href="#contact">Member</a>
   <a href="#about">Search</a>
   <a href="#about">Help</a>
   <a href="#about">New Topics</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()"><font-awesome icon="bars" style="font-size:12pt;cursor:pointer;" /></a>
 </div>
 <NuxtPage />
-<footer class="footer">
+
+<!--<footer class="footer">
   copyright@2025
-</footer>
+</footer>-->
 </template>
