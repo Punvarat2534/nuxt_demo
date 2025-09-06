@@ -109,7 +109,6 @@ const state = reactive({
 });
 
 onMounted(() => {
-    setstate();
     fnrcordcnt();
     all(1);
     state.pages = 1;
@@ -163,8 +162,8 @@ function checkIfpageActive(p) {
 }
 
 async function fnrcordcnt(){
-     var url_endpoint = await p.url_endpoint();
-    const result = await axios.get(url_endpoint+"/pagecount")
+    var url_endpoint = await p.url_endpoint();
+    const result = await axios.get("http://localhost:5000/pagecount")
             .then(response => {	
               state.rcordcnt = parseInt(response.data);
               return response.data;          
@@ -176,8 +175,9 @@ async function fnrcordcnt(){
             return result;
 }
 
-async function all(pgs){
 
+async function all(pgs){
+ 
             const tokens = await p.xcrfstokens();
             const rcord = await fnrcordcnt();
 
@@ -188,11 +188,12 @@ async function all(pgs){
                 },
             };
 
+          
             if((pgs>0)&&(pgs<=parseInt(state.rcordcnt))){    
               
               state.pages=pgs;
               state.pagestext = pgs;
-              axios.get(state.url_endpoint+"/all/"+pgs,config)
+              axios.get("http://localhost:5000/all/"+pgs)
                 .then(response => {	
                 state.books = response.data.data;        
               }).catch(error => {

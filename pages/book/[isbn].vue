@@ -48,6 +48,7 @@ async function setstate(){
 
 async function showdata(isbn){
 
+//alert(isbn);
        const tokens = await p.xcrfstokens();
        const url_endpoint = await p.url_endpoint();
 
@@ -58,8 +59,10 @@ async function showdata(isbn){
             },
         };
 
-            axios.get(url_endpoint+"/detail/"+isbn+"",config)
+            axios.get("http://localhost:5000/detail/"+isbn+"",config)
             .then(response => {	
+              //console.log(response.data);
+              
               state.books = response.data;
               state.isbn = state.books[0].isbn;
               state.title = state.books[0].title;
@@ -191,7 +194,7 @@ label{
                     <UButton color="neutral" variant="subtle"><font-awesome icon="trash" title="ลบ" style="font-size:14pt;color:red;cursor:pointer;"/></UButton>
                     <template #body style="text-align:center;">
                     <NuxtLink style="cursor:pointer;" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" v-on:click="deleted(state.isbn)">ยืนยัน</NuxtLink>
-                    <NuxtLink style="cursor:pointer;" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" v-on:click="">ยกเลิก</NuxtLink>
+                  
                     </template>
    </UModal>
    </td>
